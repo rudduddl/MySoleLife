@@ -1,0 +1,10 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.MySoleLife" parent="Theme.AppCompat.Light">
+        <!-- Customize your light theme here. -->
+        <item name="windowNoTitle">true</item>
+         <item name="colorPrimary">@color/mainColor</item>
+    </style>
+
+    <style name="Theme.MySoleLife" parent="Base.Theme.MySoleLife" />
+</resources>
