@@ -30,6 +30,7 @@
         android:layout_height="wrap_content">
 
         <EditText
+            android:id="@+id/emailArea"
             android:hint="email"
             style="@style/AuthEditText"
             android:layout_width="match_parent"
@@ -43,6 +44,7 @@
             android:layout_marginRight="10dp"/>
 
         <EditText
+            android:id="@+id/passwordArea1"
             android:hint="password"
             style="@style/AuthEditText"
             android:inputType="textPassword"
@@ -57,6 +59,7 @@
             android:layout_marginRight="10dp"/>
 
         <EditText
+            android:id="@+id/passwordArea2"
             android:hint="password check"
             style="@style/AuthEditText"
             android:inputType="textPassword"
@@ -71,6 +74,7 @@
             android:layout_marginRight="10dp"/>
 
         <Button
+            android:id="@+id/joinBtn"
             android:layout_margin="20dp"
             android:text="회원가입하기"
             android:background="@drawable/background_radius_yellow"
