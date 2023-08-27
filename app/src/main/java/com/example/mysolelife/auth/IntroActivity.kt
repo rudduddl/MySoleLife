@@ -1,5 +1,6 @@
 package com.example.mysolelife.auth
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.databinding.DataBindingUtil
@@ -14,5 +15,15 @@ class IntroActivity : AppCompatActivity() {
 //        setContentView(R.layout.activity_intro)
 
         binding = DataBindingUtil.setContentView(this, R.layout.activity_intro)
+
+        binding.loginBtn.setOnClickListener {
+            val intent = Intent(this, LoginActivity::class.java)
+            startActivity(intent)
+        }
+
+        binding.joinBtn.setOnClickListener {
+            val intent = Intent(this, JoinActivity::class.java)
+            startActivity(intent)
+        }
     }
 }
