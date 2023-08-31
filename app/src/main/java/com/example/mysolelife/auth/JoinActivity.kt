@@ -1,9 +1,11 @@
 package com.example.mysolelife.auth
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
+import com.example.mysolelife.MainActivity
 import com.example.mysolelife.R
 import com.example.mysolelife.databinding.ActivityJoinBinding
 import com.google.firebase.auth.FirebaseAuth
@@ -23,17 +25,67 @@ class JoinActivity : AppCompatActivity() {
 
         auth = Firebase.auth
 
-    //코드상에 버튼id를 기입하지도 않았는데 어떻게 버튼을 누르면 회원가입이 되는건지?
-//        auth.createUserWithEmailAndPassword("abc@abc.com", "abcabc")
-//            .addOnCompleteListener(this) { task ->
-//                if (task.isSuccessful) {
-//
-//                    Toast.makeText(this, "성공", Toast.LENGTH_SHORT).show()
-//
-//                } else {
-//
-//                    Toast.makeText(this, "실패", Toast.LENGTH_SHORT).show()
-//                }
-//            }
+        binding.joinBtn.setOnClickListener{
+
+            var isGoToJoin = true
+
+            val email = binding.emailArea.text.toString()
+            val password1 = binding.passwordArea1.text.toString()
+            val password2 = binding.passwordArea2.text.toString()
+
+            //값이 비어있는지 확인
+            if(email.isEmpty()){
+                Toast.makeText(this, "이메일을 입력하세요", Toast.LENGTH_SHORT).show()
+                isGoToJoin = false
+            }
+
+            if(password1.isEmpty()){
+                Toast.makeText(this, "비밀번호를 입력하세요", Toast.LENGTH_SHORT).show()
+                isGoToJoin = false
+            }
+
+            if(password2.isEmpty()){
+                Toast.makeText(this, "비밀번호를 확인해주세요", Toast.LENGTH_SHORT).show()
+                isGoToJoin = false
+            }
+
+            //비밀번호가 같은지 확인
+            if(!password1.equals(password2)){
+                Toast.makeText(this, "비밀번호가 다릅니다", Toast.LENGTH_SHORT).show()
+                isGoToJoin = false
+
+            }
+
+            //비밀번호가 6자 이상인지 확인
+            if(password1.length < 6){
+                Toast.makeText(this, "비밀번호를 6자리 이상으로 입력해주세요", Toast.LENGTH_SHORT).show()
+                isGoToJoin = false
+            }
+
+            if(isGoToJoin){
+
+                auth.createUserWithEmailAndPassword(email, password1).addOnCompleteListener(this) { task ->
+                        if (task.isSuccessful) {
+                            Toast.makeText(this, "성공", Toast.LENGTH_SHORT).show()
+
+                            val intent = Intent(this, MainActivity::class.java)
+                            intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP
+                            startActivity(intent)
+
+
+                        } else {
+                            Toast.makeText(this, "실패", Toast.LENGTH_SHORT).show()
+                        }
+                    }
+
+            }
+
+
+
+        }
+
+
+
+
     }
 }
