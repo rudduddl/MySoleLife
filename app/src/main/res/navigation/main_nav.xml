@@ -11,7 +11,7 @@
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" >
         <action
-            android:id="@+id/action_homeFragment_to_boardMarkFragment"
+            android:id="@+id/action_homeFragment_to_bookMarkFragment"
             app:destination="@id/boardMarkFragment" />
         <action
             android:id="@+id/action_homeFragment_to_tipFragment"
@@ -25,9 +25,9 @@
     </fragment>
     <fragment
         android:id="@+id/boardMarkFragment"
-        android:name="com.example.mysolelife.fragments.BoardMarkFragment"
+        android:name="com.example.mysolelife.fragments.BookMarkFragment"
         android:label="fragment_board_mark"
-        tools:layout="@layout/fragment_board_mark" />
+        tools:layout="@layout/fragment_book_mark" />
     <fragment
         android:id="@+id/tipFragment"
         android:name="com.example.mysolelife.fragments.TipFragment"
