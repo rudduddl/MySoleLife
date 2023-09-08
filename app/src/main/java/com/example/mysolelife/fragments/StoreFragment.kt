@@ -14,7 +14,7 @@ import com.example.mysolelife.databinding.FragmentStoreBinding
 
 class StoreFragment : Fragment() {
 
-//    private lateinit var binding : FragmentStoreBinding
+    private lateinit var binding : FragmentStoreBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,28 +25,28 @@ class StoreFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-//        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_store, container, false)
-//
-//        binding.homeTap.setOnClickListener {
-//            it.findNavController().navigate(R.id.action_storeFragment_to_homeFragment)
-//        }
-//
-//        binding.bookmarkTap.setOnClickListener {
-//            it.findNavController().navigate(R.id.action_storeFragment_to_bookMarkFragment)
-//        }
-//
-//        binding.talkTap.setOnClickListener {
-//            it.findNavController().navigate(R.id.action_storeFragment_to_talkFragment)
-//        }
-//
-//        binding.tipTap.setOnClickListener {
-//            it.findNavController().navigate(R.id.action_storeFragment_to_tipFragment)
-//        }
-//
-//
-//
-//        return binding.root
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_store, container, false)
 
-        return inflater.inflate(R.layout.fragment_store, container, false)
+        binding.homeTap.setOnClickListener {
+            it.findNavController().navigate(R.id.action_storeFragment_to_homeFragment)
+        }
+
+        binding.bookmarkTap.setOnClickListener {
+            it.findNavController().navigate(R.id.action_storeFragment_to_bookMarkFragment)
+        }
+
+        binding.talkTap.setOnClickListener {
+            it.findNavController().navigate(R.id.action_storeFragment_to_talkFragment)
+        }
+
+        binding.tipTap.setOnClickListener {
+            it.findNavController().navigate(R.id.action_storeFragment_to_tipFragment)
+        }
+
+
+
+        return binding.root
+
+
     }
 }
