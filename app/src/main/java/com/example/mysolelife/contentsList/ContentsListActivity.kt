@@ -16,12 +16,12 @@ class ContentsListActivity : AppCompatActivity() {
 
         val rv : RecyclerView = findViewById(R.id.rv)
 
-        val items = ArrayList<String>()
-        items.add("a")
-        items.add("b")
-        items.add("c")
+        val items = ArrayList<ContentsModel>()
+        items.add(ContentsModel("title1", "https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FOtaMq%2Fbtq67OMpk4W%2FH1cd0mda3n2wNWgVL9Dqy0%2Fimg.png"))
+        items.add(ContentsModel("title2", "https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FFtY3t%2Fbtq65q6P4Zr%2FWe64GM8KzHAlGE3xQ2nDjk%2Fimg.png"))
+        items.add(ContentsModel("title3", "https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FeEO4sy%2Fbtq69SgK8L3%2FttCUxYHx9aPNebNwkPcI21%2Fimg.png"))
 
-        val rvAdapter = ContentsRVAdapter(items)
+        val rvAdapter = ContentsRVAdapter(baseContext, items)
         rv.adapter = rvAdapter
 
         rv.layoutManager = GridLayoutManager(this, 2)
