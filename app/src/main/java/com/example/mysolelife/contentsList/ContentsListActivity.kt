@@ -1,7 +1,10 @@
 package com.example.mysolelife.contentsList
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
+import android.widget.Toast
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -37,5 +40,17 @@ class ContentsListActivity : AppCompatActivity() {
         rv.adapter = rvAdapter
 
         rv.layoutManager = GridLayoutManager(this, 2)
+
+        rvAdapter.itemClick = object : ContentsRVAdapter.ItemClick {
+
+            override fun onClick(view : View, position : Int) {
+
+                Toast.makeText(baseContext, items[position].title, Toast.LENGTH_SHORT).show()
+
+                val intent = Intent(this@ContentsListActivity, ContentsShowActivity::class.java)
+                intent.putExtra("url", items[position].webUrl)
+                startActivity(intent)
+            }
+        }
     }
 }
