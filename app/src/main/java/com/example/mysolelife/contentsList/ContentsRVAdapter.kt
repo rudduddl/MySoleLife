@@ -24,11 +24,11 @@ class ContentsRVAdapter(val context : Context, val items : ArrayList<ContentsMod
 
     override fun onBindViewHolder(holder: ContentsRVAdapter.ViewHolder, position: Int) {
 
-        if(itemClick != null){
-            holder.itemView.setOnClickListener{ v->
-                itemClick?.onClick(v, position)
-            }
-        }
+//        if(itemClick != null){
+//            holder.itemView.setOnClickListener{ v->
+//                itemClick?.onClick(v, position)
+//            }
+//        }
         holder.bindItems(items[position])
     }
 

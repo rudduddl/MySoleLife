@@ -7,17 +7,17 @@ import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.mysolelife.R
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 
 class ContentsListActivity : AppCompatActivity() {
-
+    lateinit var myRef : DatabaseReference
     override fun onCreate(savedInstanceState: Bundle?) {
 
         super.onCreate(savedInstanceState)
@@ -31,51 +31,35 @@ class ContentsListActivity : AppCompatActivity() {
 
         val category = intent.getStringExtra("category")
 
+
         if(category == "category1"){
 
-            val myRef = database.getReference("contents")
+            myRef = database.getReference("contents")
 
-            val postListener = object : ValueEventListener {
-                override fun onDataChange(dataSnapshot: DataSnapshot) {
-
-                    for(dataModel in dataSnapshot.children){
-                        Log.d("ContentsListActivity", dataModel.toString())
-                        val item = dataModel.getValue(ContentsModel::class.java)
-                        items.add(item!!)
-                    }
-                    rvAdapter.notifyDataSetChanged()//어댑터 동기화해서 리사이클러뷰에 item이 잘 들어갈 수 있게 함
-                    Log.d("ContentsListActivity", items.toString())
-                }
-
-                override fun onCancelled(databaseError: DatabaseError) {
-                    // Getting Post failed, log a message
-                    Log.w("ContentsListActivity", "loadPost:onCancelled", databaseError.toException())
-                }
-            }
-            myRef.addValueEventListener(postListener)
         } else if(category == "category2"){
-            val myRef = database.getReference("category2")
 
-            val postListener = object : ValueEventListener {
-                override fun onDataChange(dataSnapshot: DataSnapshot) {
+            myRef = database.getReference("contents2")
 
-                    for(dataModel in dataSnapshot.children){
-                        Log.d("ContentsListActivity", dataModel.toString())
-                        val item = dataModel.getValue(ContentsModel::class.java)
-                        items.add(item!!)
-                    }
-                    rvAdapter.notifyDataSetChanged()//어댑터 동기화해서 리사이클러뷰에 item이 잘 들어갈 수 있게 함
-                    Log.d("ContentsListActivity", items.toString())
-                }
-
-                override fun onCancelled(databaseError: DatabaseError) {
-                    // Getting Post failed, log a message
-                    Log.w("ContentsListActivity", "loadPost:onCancelled", databaseError.toException())
-                }
-            }
-            myRef.addValueEventListener(postListener)
         }
 
+        val postListener = object : ValueEventListener {
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+
+                for(dataModel in dataSnapshot.children){
+                    Log.d("ContentsListActivity", dataModel.toString())
+                    val item = dataModel.getValue(ContentsModel::class.java)
+                    items.add(item!!)
+                }
+                rvAdapter.notifyDataSetChanged()//어댑터 동기화해서 리사이클러뷰에 item이 잘 들어갈 수 있게 함
+                Log.d("ContentsListActivity", items.toString())
+            }
+
+            override fun onCancelled(databaseError: DatabaseError) {
+                // Getting Post failed, log a message
+                Log.w("ContentsListActivity", "loadPost:onCancelled", databaseError.toException())
+            }
+        }
+        myRef.addValueEventListener(postListener)
 
 
 
@@ -129,6 +113,7 @@ class ContentsListActivity : AppCompatActivity() {
 //        items.add(ContentsModel("title13", "https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2Fbtig9C%2Fbtq65UGxyWI%2FPRBIGUKJ4rjMkI7KTGrxtK%2Fimg.png", "https://philosopher-chan.tistory.com/1237"))
 //        items.add(ContentsModel("title14", "https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FznKK4%2Fbtq665AUWem%2FRUawPn5Wwb4cQ8BetEwN40%2Fimg.png", "https://philosopher-chan.tistory.com/1236"))
 //        items.add(ContentsModel("title15", "https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FblYPPY%2Fbtq66v0S4wu%2FRmuhpkXUO4FOcrlOmVG4G1%2Fimg.png", "https://philosopher-chan.tistory.com/1235"))
-
     }
+
+
 }
