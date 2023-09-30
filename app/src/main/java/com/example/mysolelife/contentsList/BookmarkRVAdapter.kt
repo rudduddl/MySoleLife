@@ -15,24 +15,24 @@ import com.example.mysolelife.R
 import com.example.mysolelife.utils.FBAuth
 import com.example.mysolelife.utils.FBRef
 
-class ContentsRVAdapter(val context : Context,
-                        val items : ArrayList<ContentsModel>,
-                        val keyList : ArrayList<String>,
-                        val bookmarkIdList : MutableList<String>)
-    : RecyclerView.Adapter<ContentsRVAdapter.ViewHolder>() {
+class BookmarkRVAdapter (val context : Context,
+                         val items : ArrayList<ContentsModel>,
+                         val keyList : ArrayList<String>,
+                         val bookmarkIdList : MutableList<String>)
+    : RecyclerView.Adapter<BookmarkRVAdapter.ViewHolder>() {
 
 
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ContentsRVAdapter.ViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BookmarkRVAdapter.ViewHolder {
         val v = LayoutInflater.from(parent.context).inflate(R.layout.contents_rv_item, parent, false)
 
-        Log.d("ContentsRVAdapter", keyList.toString())
-        Log.d("ContentsRVAdapter", bookmarkIdList.toString())
+        Log.d("BookmarkRVAdapter", keyList.toString())
+        Log.d("BookmarkRVAdapter", bookmarkIdList.toString())
 
         return ViewHolder(v)
     }
 
-    override fun onBindViewHolder(holder: ContentsRVAdapter.ViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: BookmarkRVAdapter.ViewHolder, position: Int) {
 
         holder.bindItems(items[position], keyList[position])
     }
@@ -61,26 +61,6 @@ class ContentsRVAdapter(val context : Context,
                 bookmarkArea.setImageResource(R.drawable.bookmark_white)
             }
 
-            bookmarkArea.setOnClickListener {
-                Log.d("ContentsRVAdapter", FBAuth.getUid())
-                Toast.makeText(context, key, Toast.LENGTH_SHORT).show()
-
-                if(bookmarkIdList.contains(key)){
-                    //북마크가 있을 때 삭제(색칠 지우기)
-                    FBRef.bookmarkRef
-                        .child(FBAuth.getUid())
-                        .child(key)
-                        .removeValue()
-                } else {
-                    //북마크가 없을 때
-                    FBRef.bookmarkRef
-                        .child(FBAuth.getUid())
-                        .child(key)
-                        .setValue(BookmarkModel(true))
-                }
-
-
-            }
 
 
             contentsTitle.text = item.title

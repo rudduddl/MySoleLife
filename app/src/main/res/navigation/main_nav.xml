@@ -12,7 +12,7 @@
         tools:layout="@layout/fragment_home" >
         <action
             android:id="@+id/action_homeFragment_to_bookMarkFragment"
-            app:destination="@id/boardMarkFragment" />
+            app:destination="@id/BookMarkFragment" />
         <action
             android:id="@+id/action_homeFragment_to_tipFragment"
             app:destination="@id/tipFragment" />
@@ -24,7 +24,7 @@
             app:destination="@id/storeFragment" />
     </fragment>
     <fragment
-        android:id="@+id/boardMarkFragment"
+        android:id="@+id/BookMarkFragment"
         android:name="com.example.mysolelife.fragments.BookMarkFragment"
         android:label="fragment_board_mark"
         tools:layout="@layout/fragment_book_mark" >
@@ -32,14 +32,14 @@
             android:id="@+id/action_bookMarkFragment_to_homeFragment"
             app:destination="@id/homeFragment" />
         <action
-            android:id="@+id/action_bookMarkFragment_to_tipFragment"
-            app:destination="@id/tipFragment" />
-        <action
             android:id="@+id/action_bookMarkFragment_to_talkFragment"
             app:destination="@id/talkFragment" />
         <action
             android:id="@+id/action_bookMarkFragment_to_storeFragment"
             app:destination="@id/storeFragment" />
+        <action
+            android:id="@+id/action_BookMarkFragment_to_tipFragment"
+            app:destination="@id/tipFragment" />
     </fragment>
     <fragment
         android:id="@+id/tipFragment"
@@ -51,7 +51,7 @@
             app:destination="@id/homeFragment" />
         <action
             android:id="@+id/action_tipFragment_to_bookMarkFragment"
-            app:destination="@id/boardMarkFragment" />
+            app:destination="@id/BookMarkFragment" />
         <action
             android:id="@+id/action_tipFragment_to_talkFragment"
             app:destination="@id/talkFragment" />
@@ -66,7 +66,7 @@
         tools:layout="@layout/fragment_talk" >
         <action
             android:id="@+id/action_talkFragment_to_bookMarkFragment"
-            app:destination="@id/boardMarkFragment" />
+            app:destination="@id/BookMarkFragment" />
         <action
             android:id="@+id/action_talkFragment_to_homeFragment"
             app:destination="@id/homeFragment" />
@@ -87,7 +87,7 @@
             app:destination="@id/talkFragment" />
         <action
             android:id="@+id/action_storeFragment_to_bookMarkFragment"
-            app:destination="@id/boardMarkFragment" />
+            app:destination="@id/BookMarkFragment" />
         <action
             android:id="@+id/action_storeFragment_to_homeFragment"
             app:destination="@id/homeFragment" />
